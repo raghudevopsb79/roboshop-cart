@@ -2,6 +2,7 @@
 
 env.appName = "roboshop-cart"
 env.appType = "nodejs"
+env.namespace = "app"
 
 cipipeline()
 
