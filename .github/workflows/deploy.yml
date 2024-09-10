@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy:
-    uses: raghudevopsb79/roboshop-github-reuseable-actions/.github/workflows/app-deploy.yaml
+    uses: raghudevopsb79/roboshop-github-reuseable-actions/.github/workflows/app-deploy.yaml@main
     with:
       deploy_commit: ${{ github.event.inputs.deploy_commit }}
       app_name: ${{ github.event.inputs.app_name }}
