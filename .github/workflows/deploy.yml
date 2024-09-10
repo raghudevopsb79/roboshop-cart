@@ -2,7 +2,11 @@ name: DEPLOY
 
 on:
   workflow_dispatch:
-
+    inputs:
+      greeting:
+        required: true
+      name:
+        required: true
 jobs:
   deploy-to-dev:
     runs-on: self-hosted
