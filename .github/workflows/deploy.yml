@@ -1,7 +1,7 @@
 name: DEPLOY
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       deploy_commit:
         required: true
