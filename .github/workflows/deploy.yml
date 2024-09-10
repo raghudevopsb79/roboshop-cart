@@ -1,10 +1,6 @@
 name: DEPLOY
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -17,7 +13,8 @@ jobs:
           aws eks update-kubeconfig --name main-dev-eks
           ARGOCD_PASSWORD=$(kubectl get secrets argocd-initial-admin-secret -n argocd  -o=jsonpath='{.data.password}' | base64 --decode)
           argocd login  argocd-main-dev.rdevopsb79.online:443 --grpc-web --username admin --password ${ARGOCD_PASSWORD}
-          exit 1
+          env
+          #argocd app create roboshop-cart --upsert --project default --sync-policy auto --repo https://github.com/raghudevopsb79/roboshop-helm --path chart --dest-namespace app --dest-server https://kubernetes.default.svc --values ../env-dev/roboshop-cart.yaml --helm-set image=739561048503.dkr.ecr.us-east-1.amazonaws.com/roboshop-cart:${env.GIT_COMMIT}
 
   deploy-to-qa:
     runs-on: self-hosted
