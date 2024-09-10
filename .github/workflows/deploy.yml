@@ -15,8 +15,8 @@ jobs:
       - name: Deploy
         run: |
           aws eks update-kubeconfig --name main-dev-eks
-          DATE=$(date)
-          echo $DATE
+          ARGOCD_PASSWORD=$(kubectl get secrets argocd-initial-admin-secret -n argocd  -o=jsonpath='{.data.password}' | base64 --decode)
+          argocd login  argocd-main-dev.rdevopsb79.online:443 --grpc-web --username admin --password ${ARGOCD_PASSWORD}
           exit 1
 
   deploy-to-qa:
