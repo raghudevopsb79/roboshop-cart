@@ -1,4 +1,4 @@
-name: DEPLOY
+run-name: ${{ github.event.inputs.deploy_commit }}
 
 on:
   workflow_dispatch:
